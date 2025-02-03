@@ -17,11 +17,15 @@ import imagesize
 # Don't change the list name 'Classes'          #
 #################################################
 
-YOLO_DARKNET_SUB_DIR = "YOLO_darknet"
+YOLO_DARKNET_SUB_DIR = "labels"
 
 classes = [
-    "matricula",
-    "cara"
+    'apo-ferritin', 
+    'beta-amylase', 
+    'beta-galactosidase', 
+    'ribosome', 
+    'thyroglobulin', 
+    'virus-like-particle'
 ]
 
 
@@ -54,7 +58,7 @@ def get_images_info_and_annotations(opt):
 
         label_file_name = f"{file_path.stem}.txt"
         if opt.yolo_subdir:
-            annotations_path = file_path.parent / YOLO_DARKNET_SUB_DIR / label_file_name
+            annotations_path = file_path.parent.parent / YOLO_DARKNET_SUB_DIR / label_file_name
         else:
             annotations_path = file_path.parent / label_file_name
 
@@ -220,7 +224,7 @@ def get_args():
 
 def main(opt):
     output_name = opt.output
-    output_path = "output/" + output_name
+    output_path = "/content/Yolo-to-COCO-format-converter/output/" + output_name
 
     print("Start!")
 
